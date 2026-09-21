@@ -1,8 +1,8 @@
-package com.example.modtemplate.platform.fabric.datagen;
+package com.elduin.elduin_emojis.platform.fabric.datagen;
 
 //? fabric && != 1.19.2 {
 
-import com.example.modtemplate.ModTemplate;
+import com.elduin.elduin_emojis.ElduinEmojis;
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
@@ -46,7 +46,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
 	@Override
 	public @NotNull String getName() {
-		return ModTemplate.MOD_ID + ":recipe_provider";
+		return ElduinEmojis.MOD_ID + ":recipe_provider";
 	}
 
 	static class IntRecipeProvider extends RecipeProvider {

@@ -1,6 +1,6 @@
-# <MOD_DISPLAY_NAME>
+# Elduin Emojis
 
-<One plain sentence: what this mod does, in Elduin's words.>
+Type a code like :red: in chat and a little picture of Elduin's face pops up, in nine colors. Type /emojis to see them all.
 
 This file is read automatically whenever Claude Code is opened in this folder.
 Everything below is specific to this one mod. The general rules about how to
@@ -8,12 +8,12 @@ work with Elduin live in `~/.claude/CLAUDE.md`.
 
 ## Facts about this mod
 
-    mod id            <mod_id>              (underscores — never change this)
-    slug              <mod-slug>            (repo name and Modrinth slug)
-    package           <com.elduin.mod_id>
+    mod id            elduin_emojis           (underscores — never change this)
+    slug              elduin-emojis           (repo name and Modrinth slug)
+    package           com.elduin.elduin_emojis
     loader            fabric                (only fabric — see below)
-    minecraft         <1.21.11, 26.2>
-    primary version   <1.21.11>             (the one he plays)
+    minecraft         1.21.11, 26.2
+    primary version   1.21.11           (the one he plays)
     java              21 for 1.21.x, 25 for 26.x — Gradle picks this per version
 
 The mod id is baked into save files. Once a world has been played with this mod,
@@ -96,3 +96,17 @@ Handled by the **share-it** skill. Short version: bump `mod.version` in
 `stonecutter.properties.toml`, update `CHANGELOG.md` in plain words, push a
 `v<version>` tag, and the workflow publishes to Modrinth using the org's
 `MODRINTH_TOKEN`.
+
+## How the emojis work
+
+- Each face is one character (U+E000 to U+E008) in the mod's own font,
+  `assets/elduin_emojis/font/emoji.json`. The pictures are one 72x8 strip,
+  `textures/font/emojis.png`, in the same order as `Emojis.CODES`.
+- `ChatComponentMixin` swaps codes for faces as each chat line arrives. It only
+  runs on the player's own game (client only), so it works on any server, and
+  people without the mod just see `:red:` as text.
+- The mixin names the full `addMessage` signature on purpose. It differs
+  between 1.21.11 and 26.2, and matching by name alone hooks the wrong method
+  in the real (non-dev) 1.21.11 game.
+- The faces come from Elduin's skin: the 8x8 face plus the hat layer, tinted.
+  Don't put his Minecraft username in this repo.

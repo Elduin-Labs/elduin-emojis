@@ -1,4 +1,4 @@
-package com.example.modtemplate.platform.fabric.datagen;
+package com.elduin.elduin_emojis.platform.fabric.datagen;
 
 //? fabric {
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
