@@ -4,6 +4,7 @@ import com.elduin.elduin_emojis.Emojis;
 
 import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.network.chat.Component;
+import dev.kikugie.fletching_table.annotation.MixinEnvironment;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -17,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
  * the real game.
  */
 @Mixin(ChatComponent.class)
+@MixinEnvironment(type = MixinEnvironment.Env.CLIENT)
 public abstract class ChatComponentMixin {
 
 	//? if >=26.2 {
